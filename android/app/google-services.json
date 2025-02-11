@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "460154667128",
+    "project_id": "flutter-recipe-app-b8809",
+    "storage_bucket": "flutter-recipe-app-b8809.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460154667128:android:9a809bd700667f32aaad8d",
+        "android_client_info": {
+          "package_name": "com.konoha.recipe_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460154667128-iuq57jhg7aam924sonnsd9575t34fo81.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.konoha.recipe_app",
+            "certificate_hash": "608ddcfb989682010d6ef077e6c082d55a13da48"
+          }
+        },
+        {
+          "client_id": "460154667128-cau0mrs7ok4sdop8ibapkfo6spoj0ktf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-8j44BWq_N_8GoC29bjdDkJuY3OEdQl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460154667128-cau0mrs7ok4sdop8ibapkfo6spoj0ktf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
