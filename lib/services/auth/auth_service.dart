@@ -10,6 +10,24 @@ class AuthService {
   // Geçerli kullanıcıyı döndürür
   User? get currentUser => _auth.currentUser;
 
+//Geçerli kullanıcı adını döndürür
+  Future<String?> getUserName() async {
+    try {
+      User? currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser == null) {
+        throw Exception("Kullanıcı oturum açmamış.");
+      }
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(currentUser.uid)
+          .get();
+      return userDoc.get('username');
+    } catch (e) {
+      print("Kullanıcı adı alınamadı: $e");
+      return null;
+    }
+  }
+
   // Email ve şifre ile giriş yapma metodu
   Future<UserCredential> signInWithEmailAndPassword(
       String email, String password) async {
@@ -22,7 +40,7 @@ class AuthService {
         "uid": userCredential.user!.uid,
         "email": email,
       }, SetOptions(merge: true));
-      
+
       return userCredential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -39,7 +57,7 @@ class AuthService {
 
   // Email ve şifre ile kayıt olma metodu
   Future<UserCredential> registerWithEmailAndPassword(
-      String email, String password) async {
+      String email, String password, String username) async {
     try {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -47,8 +65,9 @@ class AuthService {
       await _firestore.collection("Users").doc(userCredential.user!.uid).set({
         "uid": userCredential.user!.uid,
         "email": email,
+        "username": username
       }, SetOptions(merge: true));
-      
+
       return userCredential;
     } catch (e) {
       rethrow;

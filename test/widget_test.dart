@@ -1,4 +1,4 @@
-import 'package:flutter_recipe_app/pages/auth/login_page.dart';
+import 'package:flutter_recipe_app/ui/auth/login_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_recipe_app/main.dart';
 

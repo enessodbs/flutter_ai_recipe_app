@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe_app/data/onboard_data/onboard_data.dart';
-import 'package:flutter_recipe_app/pages/auth/login_page.dart';
-import 'package:flutter_recipe_app/pages/splash/components/content_template.dart';
+import 'package:flutter_recipe_app/ui/auth/login_page.dart';
+import 'package:flutter_recipe_app/ui/splash/components/content_template.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {

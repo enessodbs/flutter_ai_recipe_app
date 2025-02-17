@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_recipe_app/pages/auth/register_page.dart';
-import 'package:flutter_recipe_app/pages/home_page.dart';
+import 'package:flutter_recipe_app/constant/color.dart';
+import 'package:flutter_recipe_app/ui/auth/register_page.dart';
+import 'package:flutter_recipe_app/ui/home_page.dart';
 import 'package:flutter_recipe_app/services/auth/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -73,28 +74,47 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(30),
-                    child: Column(
-                      children: <Widget>[
-                        const SizedBox(height: 60),
-                        _buildTextField(email, "Email", false),
-                        _buildTextField(password, "Password", true),
-                        const SizedBox(height: 40),
-                        const Text(
-                          "Forgot Password?",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        const SizedBox(height: 40),
-                        _buildLoginButton(),
-                        const SizedBox(height: 30),
-                        const Text(
-                          "Continue with Google",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        const SizedBox(height: 30),
-                        _buildGoogleLoginButton(),
-                        const SizedBox(height: 20),
-                        _buildSignUpText(),
-                      ],
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          const SizedBox(height: 60),
+                          Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color:
+                                        const Color.fromRGBO(225, 95, 27, .3),
+                                    blurRadius: 20,
+                                    offset: const Offset(0, 10),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  _buildTextField(email, "Email", false),
+                                  _buildTextField(password, "Password", true),
+                                ],
+                              )),
+                          const SizedBox(height: 40),
+                          const Text(
+                            "Forgot Password?",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          const SizedBox(height: 40),
+                          _buildLoginButton(),
+                          const SizedBox(height: 30),
+                          const Text(
+                            "Continue with Google",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          const SizedBox(height: 30),
+                          _buildGoogleLoginButton(),
+                          const SizedBox(height: 20),
+                          _buildSignUpText(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -106,18 +126,13 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String hint, bool isPassword) {
+  Widget _buildTextField(
+      TextEditingController controller, String hint, bool isPassword) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: const Color.fromRGBO(225, 95, 27, .3),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
+        border: Border(
+          bottom: BorderSide(color: Colors.grey.shade200),
+        ),
       ),
       child: Column(
         children: <Widget>[
@@ -146,7 +161,8 @@ class _LoginPageState extends State<LoginPage> {
     return ElevatedButton(
       onPressed: () async {
         try {
-          await _authService.signInWithEmailAndPassword(email.text, password.text);
+          await _authService.signInWithEmailAndPassword(
+              email.text, password.text);
 
           if (!mounted) return;
           Navigator.pushReplacement(
@@ -166,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.orange[900],
+        backgroundColor: primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
         ),
@@ -189,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
               _authService.signInWithGoogle();
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
+              backgroundColor: googleButton,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50),
               ),
@@ -197,7 +213,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
             child: const Text(
               "Google",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ),

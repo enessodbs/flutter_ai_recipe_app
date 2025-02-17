@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_recipe_app/pages/splash/onboarding_screen.dart';
+import 'package:flutter_recipe_app/ui/splash/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

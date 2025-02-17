@@ -1,4 +1,4 @@
-import 'package:flutter_recipe_app/data/onboard_data/model/onboarding_item.dart';
+import 'package:flutter_recipe_app/data/onboard_data/onboarditem_model.dart';
 
 class OnboardData {
  static List<OnboardingItemModel> onboardingItemList =[

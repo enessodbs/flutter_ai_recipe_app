@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_recipe_app/data/onboard_data/model/onboarding_item.dart';
+import 'package:flutter_recipe_app/data/onboard_data/onboarditem_model.dart';
 
 class ContentTemplate extends StatelessWidget {
   const ContentTemplate({
